@@ -1,0 +1,44 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.8in]{geometry}
+\usepackage{layout}
+\usepackage{dirtytalk}
+\begin{document}
+\setcounter{section}{-1}
+\section{Sort}
+\subsection{Insertion Sort}
+Insertion sort works by scanning from right to left and when an item is out of place, \say{bubbling} that item to the left until it is in its rightful place.
+\begin{itemize}
+\item stable? Yes.
+\item time complexity:
+Worst case is $\theta n^2$.
+\item space complexity: 
+$\theta 1$ as everything is done in place.
+\item best-case input:
+A nearly-sorted array, as almost all needed work is done. 
+\item worst-case input: An array in reverse order. $\sum_{k=1}^{n} = 1 + 2 + 3 + ... + n$
+\end{itemize}
+\subsection{Selection Sort}
+Selection sort scans through the entire \emph{unsorted} part of the list looking for the next smallest item. Therefore the running-time of this algorithm is given by the triangular series $\sum_{k=1}^n k$ where $k$ is the number of compares.
+
+\subsection{HeapSort}
+When done in the classic \say{in place} method, HeapSort breaks items into single item queues and then merges those already \textit{sorted} queues into larger sorted queues
+\subsection{MergeSort}
+\subsection{QuickSort}
+\section{Search}
+\subsection{Djikstra's}
+\subsection{A*}
+\subsection{Primm's}
+\section{Addenda}
+\subsection{Asymptotics}
+
+\begin{equation}
+Taking:
+\frac{r(\alpha)}{r(\beta)} = \bigg(\frac{\alpha}{\beta}\bigg)^b as\ \gamma = \delta
+\end{equation}
+\begin{equation}
+we\ can\ siplify\ to:\ log_\gamma \delta = b \textrm{ and solve for $b$}
+\end{equation}
+
+
+\end{document}
