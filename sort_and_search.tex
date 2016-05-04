@@ -4,7 +4,6 @@
 \usepackage{layout}
 \usepackage{dirtytalk}
 \begin{document}
-\setcounter{section}{-1}
 \section{Sort}
 \subsection{Insertion Sort}
 Insertion sort works by scanning from right to left and when an item is out of place, \say{bubbling} that item to the left until it is in its rightful place.
@@ -25,10 +24,67 @@ Selection sort scans through the entire \emph{unsorted} part of the list looking
 When done in the classic \say{in place} method, HeapSort breaks items into single item queues and then merges those already \textit{sorted} queues into larger sorted queues
 \subsection{MergeSort}
 \subsection{QuickSort}
+Picks 
 \section{Search}
+Adjacency list: list of nodes that can be \emph{immediately} reached from the current node. A.K.A. connections or outgoing edges.
+
+Adjacency matrix: table or matrix of \emph{nodes} $\cdot$ \emph{nodes} where each intersection is either \emph{true} or \emph{false}
+
+\begin{center}
+\begin{tabular}{c | c c c}
+ & a & b & c \\ \hline
+ a & 0 & 1 & 1 \\
+ b & 1 & 0 & 0 \\
+ c & 1 & 0 & 0 \\
+\end{tabular}
+\end{center}
+
 \subsection{Djikstra's}
+time complexity: $O(|E|log|V|)$ according to Hug, and $O(|E| + |V|log|V|)$ according to Wikipedia. Hug's justification is as follow::
+\begin{itemize}
+\item we do $V$ insertions, which each cost $O(log|V|)$ time.
+\item we do $V$ min-deletions, costing $O(log|V|)$ time each.
+\item we do $E$ \say{priority decreases}, costing $O(log|V|)$ time each.
+\item so our total runtime is $O(V\cdot log|V| + V\cdot log|V| + E\cdot log|V|) \Rightarrow O(2V+E\cdot log|V|)$
+\item which becomes $O(E\cdot log|V|)$
+\end{itemize}
+
+Algorithm for finding shortest path in a graph. \textit{Greedy} algorithm in that it enqueues the lowest cost path th
 \subsection{A*}
+Djisktra's but with heuristics added to edge-weights.
+\subsection{Kruskal's}
+time complexity: $V$ is at most $E^2$, so it follows that 
+$O(logV^2) \Rightarrow O(2logV) \Rightarrow O(logV)$.
+
+Algorithm for finding the MST of a graph. 
+
+Pseudocode: 
+\begin{verbatim}
+insert all edges into MinPQ
+while (not all nodes are connected):
+    dequeue edge
+    if (edge doesn't create a cycle):
+    	    add edge
+\end{verbatim}
+One issue with this algorithm is that it runs the risk of adding edges that are disconnected to the larger whole of the graph if not careful about enqueuing edges. So for Kruskal's to be the ideal algorithm we must be sure that the graph is connected.
 \subsection{Primm's}
+time complexity: 
+\begin{itemize}
+\item with binary heap and adjacency list: $O (|E|\ log\ |V|)$
+\item with adjacency matrix $O (|V|^2)$
+\end{itemize}
+
+
+Another algorithm for finding the MST of a graph. Algorithm of choice if not sure that graph is connected. As Primm's is run from an arbitrary vertex, it will only find vertices that are connected to starting vertex. 
+
+Pseudocode:
+\begin{verbatim}
+start at a vertex
+while (MST isn't found):
+    visit closest unvisited vertex to any visited vertex
+    add edge to MST
+\end{verbatim}
+So what happens is essentially that we pick a place to start, then visit the node closest to the start if we haven't already visited it. We will then continue to do this until we've found the MST for the graph.
 \section{Addenda}
 \subsection{Asymptotics}
 
