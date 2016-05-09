@@ -7,24 +7,50 @@
 \section{Sort}
 \subsection{Insertion Sort}
 Insertion sort works by scanning from right to left and when an item is out of place, \say{bubbling} that item to the left until it is in its rightful place.
+\newline \newline \noindent
+Basically what happens is an item (the leftmost of the unsorted portion) is selected, and then scanned through the already sorted portion of the list until its rightful place is found.
 \begin{itemize}
 \item stable? Yes.
 \item time complexity:
-Worst case is $\theta n^2$.
+Worst case is $\Theta n^2$.
 \item space complexity: 
-$\theta 1$ as everything is done in place.
+$\Theta 1$ as everything is done in place.
 \item best-case input:
 A nearly-sorted array, as almost all needed work is done. 
-\item worst-case input: An array in reverse order. $\sum_{k=1}^{n} = 1 + 2 + 3 + ... + n$
+\item worst-case input: An array in reverse order. $\sum_{k=1}^{n} = 1 + 2 + 3 + ... + n$, because the item we are looking at \textit{belongs} at the new beginning of the list, but we have to look at \textit{everything} on the way over.
 \end{itemize}
 \subsection{Selection Sort}
-Selection sort scans through the entire \emph{unsorted} part of the list looking for the next smallest item. Therefore the running-time of this algorithm is given by the triangular series $\sum_{k=1}^n k$ where $k$ is the number of compares.
-
+Selection sort scans through the entire \emph{unsorted} part of the list looking for the next smallest item. Therefore the running-time of this algorithm is given by the series $\sum_{k=1}^n k$ where $k$ is the number of compares.
+\begin{itemize}
+\item Not stable
+\item Upper-bounded by $O(n^2)$, actually, always runs in $\Theta(n^2)$
+\item The only benefit of selection sort over other sorts: it minimizes the number of array swaps
+\end{itemize}
 \subsection{HeapSort}
-When done in the classic \say{in place} method, HeapSort breaks items into single item queues and then merges those already \textit{sorted} queues into larger sorted queues
+Heapifies data (classically bottom-up), then builds the sorted list from the last item to the first.
+\begin{itemize}
+\item Not stable
+\item $\Theta\big(n\cdot lg(n)\big)$
+\end{itemize}
 \subsection{MergeSort}
+The fkn shit.
+\begin{itemize}
+\item Stable
+\item $\Theta\big(n\cdot lg(n)\big)$
+\item $\Theta (n)$ extra space for arrays
+\item$\Theta\big(lg(n)\big)$ extra space for your mergeable datastructure of choice
+\end{itemize}
 \subsection{QuickSort}
-Picks 
+Picks an item as a pivot (this was classically the leftmostmost item, but this causes worst case performance on already sorted input). Partitions $x$ around pivot $n$ like dis: 
+\begin{tabular}{| c | c | c |}
+\hline
+$x < n$ & $x = n$ & $n<x$ \\
+\hline
+\end{tabular}
+\begin{itemize}
+\item Not stable\footnote{sometimes it is, but sketchy things must be done for this to be the case.}
+\item Upper-bounded by $O(n^2)$ on already sorted (and not shuffled arrays, but is pretty dependably $\Theta\big(n\cdot log(n)\big)$ with carefullness
+\end{itemize}
 \section{Search}
 Adjacency list: list of nodes that can be \emph{immediately} reached from the current node. A.K.A. connections or outgoing edges.
 
