@@ -28,6 +28,8 @@ Selection sort scans through the entire \emph{unsorted} part of the list looking
 \end{itemize}
 \subsection{HeapSort}
 Heapifies data (classically bottom-up), then builds the sorted list from the last item to the first.
+\newline \newline \noindent
+Runs in absolute worst case $O\big(n\cdot lg(n)\big)$, so good choice if time constraints are tight and Quicksort with shuffle can't be used.
 \begin{itemize}
 \item Not stable
 \item $\Theta\big(n\cdot lg(n)\big)$
@@ -47,10 +49,17 @@ Picks an item as a pivot (this was classically the leftmostmost item, but this c
 $x < n$ & $x = n$ & $n<x$ \\
 \hline
 \end{tabular}
+\newline \newline \noindent
+Naive implementations run in $n^2$ on already sorted arrays (which is apparently common in real world situations), so caution must be exercised with this sort.
+\newline \newline \noindent
+There are many situations where we might use Quicksort: When we want faster overall runtime, better memory usage, when we don't care about stability, or when we have many duplicates.
 \begin{itemize}
 \item Not stable\footnote{sometimes it is, but sketchy things must be done for this to be the case.}
 \item Upper-bounded by $O(n^2)$ on already sorted (and not shuffled arrays, but is pretty dependably $\Theta\big(n\cdot log(n)\big)$ with carefullness
 \end{itemize}
+\subsection{MSD \& LSD}
+Items are sorted by \emph{Least Significant Digit} or \emph{Most Significant Digit}. Arrays are partitioned into subarrays based on digit place being looked at (i.e. tens, hundreds, thousands) and placed in order based on that place. Stability ensures that they are in place.
+\newpage
 \section{Search}
 Adjacency list: list of nodes that can be \emph{immediately} reached from the current node. A.K.A. connections or outgoing edges.
 
